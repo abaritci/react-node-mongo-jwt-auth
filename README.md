@@ -1,5 +1,5 @@
-# Voice Assistant Hoory
-Voice assistant hoory is simple project with Node.js(Express), React and MongoDB.
+# React node mongo jwt auth
+React node mongo jwt auth is simple project with Node.js(Express), React and MongoDB.
 ## Installation
 ### Database
 Need to install and run MongoDB
