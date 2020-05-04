@@ -7,6 +7,14 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
+  firstName: {
+    type: String,
+    required: true
+  },
+  lastName: {
+    type: String,
+    required: true
+  },
   email: {
     type: String,
     required: true
@@ -18,12 +26,16 @@ const UserSchema = new Schema({
   avatar: {
     type: String
   },
+  sex: {
+    type: String
+  },
+  color: {
+    type: String
+  },
   date: {
     type: Date,
     default: Date.now
   }
 });
 
-const User = mongoose.model('users', UserSchema);
-
-module.exports = User;
+module.exports = mongoose.model('users', UserSchema);

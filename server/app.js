@@ -1,8 +1,10 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const passport = require('passport');
-const config = require('./db');
+Promise = require('bluebird');
+const express = require('express'),
+  mongoose = require('mongoose'),
+  bodyParser = require('body-parser'),
+  passport = require('passport'),
+  config = require('./db'),
+  cors = require('cors');
 
 const users = require('./routes/user');
 
@@ -12,6 +14,23 @@ mongoose.connect(config.DB, { useNewUrlParser: true }).then(
 );
 
 const app = express();
+
+app.use(cors());
+
+app.use((req, res, next) => {
+  // Website you wish to allow to connect
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  
+  // Request methods you wish to allow
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  
+  // Request headers you wish to allow
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+  
+  // Pass to next layer of middleware
+  next();
+});
+
 app.use(passport.initialize());
 require('./passport')(passport);
 
